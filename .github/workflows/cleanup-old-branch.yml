@@ -1,0 +1,27 @@
+name: Cleanup old branches (Practice)
+
+on:
+  push:
+    branches:
+      - develop   # master を使っているならここを master に変える
+  workflow_dispatch:      # 手動実行も可能
+
+permissions:
+  contents: write
+
+
+jobs:
+  housekeeping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Run delete-old-branches-action
+        uses: beatlabs/delete-old-branches-action@v0.0.10
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          date: '1 minute ago'  # ← "1分以上前に更新されてないブランチ" を削除対象に
+          dry_run: false
+          delete_tags: false
+          exclude_open_pr_branches: true
