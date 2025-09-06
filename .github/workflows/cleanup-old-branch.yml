@@ -4,7 +4,13 @@ on:
   push:
     branches:
       - develop   # master を使っているならここを master に変える
-  workflow_dispatch:      # 手動実行も可能
+  workflow_dispatch:
+    inputs:
+      example_input:
+        description: 'An example input'
+        required: false
+        default: 'default value'
+
 
 permissions:
   contents: write
