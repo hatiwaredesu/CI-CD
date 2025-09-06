@@ -3,7 +3,7 @@ name: Cleanup old branches (Practice)
 on:
   push:
     branches:
-      - develop   # master を使っているならここを master に変える
+      - main   # master を使っているならここを master に変える
   workflow_dispatch:      # 手動実行も可能
 
 permissions:
