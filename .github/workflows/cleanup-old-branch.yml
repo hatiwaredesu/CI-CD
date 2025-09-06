@@ -5,12 +5,6 @@ on:
     branches:
       - develop   # master を使っているならここを master に変える
   workflow_dispatch:
-    inputs:
-      example_input:
-        description: 'An example input'
-        required: false
-        default: 'default value'
-
 
 permissions:
   contents: write
